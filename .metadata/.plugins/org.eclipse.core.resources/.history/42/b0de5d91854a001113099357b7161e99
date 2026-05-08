@@ -1,0 +1,44 @@
+package com.example.demo.controller;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.example.demo.entity.PersonaEntity;
+import com.example.demo.interfaces.IPersonaService;
+
+@RestController
+@RequestMapping("/api/personas")
+@CrossOrigin(origins = "*") // Permite que Angular se conecte
+public class PersonaController {
+
+    @Autowired
+    private IPersonaService personaService;
+
+    // Obtener todas las personas
+    @GetMapping
+    public List<PersonaEntity> listar() {
+        return personaService.obtenerTodas();
+    }
+
+    // Guardar una nueva persona
+    @PostMapping
+    public PersonaEntity guardar(@RequestBody PersonaEntity persona) {
+        return personaService.guardar(persona);
+    }
+
+    // Buscar una persona por ID
+    @GetMapping("/{id}")
+    public ResponseEntity<PersonaEntity> obtenerPorId(@PathVariable Long id) {
+        return personaService.buscarPorId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // Eliminar una persona
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id) {
+        personaService.eliminar(id);
+    }
+}
