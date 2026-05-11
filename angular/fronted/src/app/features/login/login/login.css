@@ -1,0 +1,11 @@
+.container-fluid {
+  background: linear-gradient(
+    135deg,
+    #f1f5f9 0%,
+    #dbeafe 100%
+  );
+}
+
+.card {
+  backdrop-filter: blur(10px);
+}
