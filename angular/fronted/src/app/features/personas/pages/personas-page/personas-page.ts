@@ -32,6 +32,10 @@ export class PersonasPage implements OnInit {
 
   mostrarFormulario = signal(false);
 
+  modoEdicion = signal(false);
+
+  personaEditandoId = signal<number | null>(null);
+
   nuevaPersona = signal<Persona>({
     rut: '',
     nombre: '',
@@ -80,11 +84,19 @@ export class PersonasPage implements OnInit {
 
   cerrarFormulario(): void {
 
-    this.mostrarFormulario.set(false);
+    this.resetFormulario();
 
   }
 
   guardarPersona(): void {
+
+    if (this.modoEdicion()) {
+
+      this.actualizarPersona();
+
+      return;
+
+    }
 
     this.personaService
       .guardarPersona(this.nuevaPersona())
@@ -97,15 +109,7 @@ export class PersonasPage implements OnInit {
             personaGuardada
           ]);
 
-          this.nuevaPersona.set({
-            rut: '',
-            nombre: '',
-            apellidoPaterno: '',
-            apellidoMaterno: '',
-            direccion: ''
-          });
-
-          this.mostrarFormulario.set(false);
+          this.resetFormulario();
 
         },
 
@@ -116,6 +120,102 @@ export class PersonasPage implements OnInit {
         }
 
       });
+
+  }
+
+  editarPersona(persona: Persona): void {
+
+    this.modoEdicion.set(true);
+
+    this.personaEditandoId.set(
+      persona.id!
+    );
+
+    this.nuevaPersona.set({
+      ...persona
+    });
+
+    this.mostrarFormulario.set(true);
+
+  }
+
+  actualizarPersona(): void {
+
+    this.personaService
+      .actualizarPersona(
+        this.personaEditandoId()!,
+        this.nuevaPersona()
+      )
+      .subscribe({
+
+        next: (personaActualizada) => {
+
+          this.personas.update(lista =>
+            lista.map(p =>
+              p.id === personaActualizada.id
+                ? personaActualizada
+                : p
+            )
+          );
+
+          this.resetFormulario();
+
+        },
+
+        error: (error) => {
+
+          console.error(error);
+
+        }
+
+      });
+
+  }
+
+  eliminarPersona(id: number): void {
+
+    const confirmar =
+      confirm('¿Estás seguro de eliminar esta persona?');
+
+    if (!confirmar) return;
+
+    this.personaService
+      .eliminarPersona(id)
+      .subscribe({
+
+        next: () => {
+
+          this.personas.update(lista =>
+            lista.filter(p => p.id !== id)
+          );
+
+        },
+
+        error: (error) => {
+
+          console.error(error);
+
+        }
+
+      });
+
+  }
+
+  resetFormulario(): void {
+
+    this.nuevaPersona.set({
+      rut: '',
+      nombre: '',
+      apellidoPaterno: '',
+      apellidoMaterno: '',
+      direccion: ''
+    });
+
+    this.modoEdicion.set(false);
+
+    this.personaEditandoId.set(null);
+
+    this.mostrarFormulario.set(false);
 
   }
 

@@ -33,4 +33,22 @@ export class PersonaService {
 
   }
 
+  eliminarPersona(id: number): Observable<any> {
+
+    return this.http.delete(
+      `${this.API_URL}/${id}`
+    );
+  }
+
+  actualizarPersona(
+    id: number,
+    persona: Persona
+  ): Observable<Persona> {
+
+    return this.http.put<Persona>(
+      `${this.API_URL}/${id}`,
+      persona
+    );
+  }
+  
 }

@@ -31,6 +31,16 @@ export const routes: Routes = [
   },
 
   {
+  path: 'matriculas',
+
+  loadComponent: () =>
+
+    import(
+      './features/matriculas/pages/matriculas-page/matriculas-page'
+    ).then(m => m.MatriculasPage)
+  },  
+ 
+  {
     path: '**',
     redirectTo: ''
   }

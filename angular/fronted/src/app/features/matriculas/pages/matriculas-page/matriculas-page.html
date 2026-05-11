@@ -1,0 +1,252 @@
+<div class="container py-5">
+
+  <div class="mb-5">
+
+    <h1 class="fw-bold text-primary">
+      Gestión de Matrículas
+    </h1>
+
+    <p class="text-secondary">
+      Registro oficial de alumnos y apoderados
+    </p>
+
+  </div>
+
+  @if (cargando()) {
+
+    <div class="alert alert-info">
+
+      Cargando información...
+
+    </div>
+
+  }
+
+  @if (!cargando()) {
+
+    <div class="card shadow border-0">
+
+      <div class="card-body p-4">
+
+        <div class="row">
+
+          <!-- ALUMNO -->
+
+          <div class="col-md-6 mb-4">
+
+            <label class="form-label fw-semibold">
+
+              Alumno
+
+            </label>
+
+            <select
+              class="form-select"
+              [(ngModel)]="nuevaMatricula().alumnoId"
+            >
+
+              <option [value]="0">
+
+                Seleccione alumno
+
+              </option>
+
+              @for (
+                alumno of alumnos();
+                track alumno.id
+              ) {
+
+                <option [value]="alumno.id">
+
+                  {{ alumno.nombre }}
+                  {{ alumno.apellidoPaterno }}
+                  - {{ alumno.rut }}
+
+                </option>
+
+              }
+
+            </select>
+
+          </div>
+
+          <!-- CURSO -->
+
+          <div class="col-md-6 mb-4">
+
+            <label class="form-label fw-semibold">
+
+              Curso
+
+            </label>
+
+            <select
+              class="form-select"
+              [(ngModel)]="nuevaMatricula().cursoId"
+            >
+
+              <option [value]="0">
+
+                Seleccione curso
+
+              </option>
+
+              @for (
+                curso of cursos();
+                track curso.id
+              ) {
+
+                <option [value]="curso.id">
+
+                  {{ curso.nombreCurso }}
+
+                </option>
+
+              }
+
+            </select>
+
+          </div>
+
+          <!-- SOSTENEDOR -->
+
+          <div class="col-md-4 mb-4">
+
+            <label class="form-label fw-semibold">
+
+              Sostenedor
+
+            </label>
+
+            <select
+              class="form-select"
+              [(ngModel)]="nuevaMatricula().sostenedorId"
+            >
+
+              <option [value]="0">
+
+                Seleccione sostenedor
+
+              </option>
+
+              @for (
+                persona of personas();
+                track persona.id
+              ) {
+
+                <option [value]="persona.id">
+
+                  {{ persona.nombre }}
+                  {{ persona.apellidoPaterno }}
+                  - {{ persona.rut }}
+
+                </option>
+
+              }
+
+            </select>
+
+          </div>
+
+          <!-- TITULAR -->
+
+          <div class="col-md-4 mb-4">
+
+            <label class="form-label fw-semibold">
+
+              Apoderado Titular
+
+            </label>
+
+            <select
+              class="form-select"
+              [(ngModel)]="nuevaMatricula().apoderadoTitularId"
+            >
+
+              <option [value]="0">
+
+                Seleccione titular
+
+              </option>
+
+              @for (
+                persona of personas();
+                track persona.id
+              ) {
+
+                <option [value]="persona.id">
+
+                  {{ persona.nombre }}
+                  {{ persona.apellidoPaterno }}
+                  - {{ persona.rut }}
+
+                </option>
+
+              }
+
+            </select>
+
+          </div>
+
+          <!-- SUPLENTE -->
+
+          <div class="col-md-4 mb-4">
+
+            <label class="form-label fw-semibold">
+
+              Apoderado Suplente
+
+            </label>
+
+            <select
+              class="form-select"
+              [(ngModel)]="nuevaMatricula().apoderadoSuplenteId"
+            >
+
+              <option [value]="0">
+
+                Seleccione suplente
+
+              </option>
+
+              @for (
+                persona of personas();
+                track persona.id
+              ) {
+
+                <option [value]="persona.id">
+
+                  {{ persona.nombre }}
+                  {{ persona.apellidoPaterno }}
+                  - {{ persona.rut }}
+
+                </option>
+
+              }
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="d-grid mt-3">
+
+          <button
+            class="btn btn-primary btn-lg"
+            (click)="guardarMatricula()"
+          >
+
+            Confirmar Matrícula
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+
+</div>

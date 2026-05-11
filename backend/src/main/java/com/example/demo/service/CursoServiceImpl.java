@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,28 +11,40 @@ import com.example.demo.interfaces.ICursoService;
 import com.example.demo.repository.CursoRepository;
 
 @Service
-public class CursoServiceImpl implements ICursoService {
+public class CursoServiceImpl
+        implements ICursoService {
 
     @Autowired
     private CursoRepository cursoRepository;
 
     @Override
-    public CursoEntity guardar(CursoEntity curso) {
+    public CursoEntity guardar(
+            CursoEntity curso) {
+
         return cursoRepository.save(curso);
+
     }
 
     @Override
     public List<CursoEntity> obtenerTodos() {
-        return (List<CursoEntity>) cursoRepository.findAll();
+
+        return cursoRepository.findAll();
+
     }
 
     @Override
-    public Optional<CursoEntity> buscarPorId(Long id) {
+    public Optional<CursoEntity> buscarPorId(
+            Long id) {
+
         return cursoRepository.findById(id);
+
     }
 
     @Override
     public void eliminar(Long id) {
+
         cursoRepository.deleteById(id);
+
     }
+
 }

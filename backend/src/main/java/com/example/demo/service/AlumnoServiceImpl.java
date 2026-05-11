@@ -1,7 +1,8 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,28 +11,23 @@ import com.example.demo.interfaces.IAlumnoService;
 import com.example.demo.repository.AlumnoRepository;
 
 @Service
-public class AlumnoServiceImpl implements IAlumnoService {
+public class AlumnoServiceImpl
+        implements IAlumnoService {
 
     @Autowired
-    private AlumnoRepository alumnoRepository;
-
-    @Override
-    public AlumnoEntity guardar(AlumnoEntity alumno) {
-        return alumnoRepository.save(alumno);
-    }
+    private AlumnoRepository repository;
 
     @Override
     public List<AlumnoEntity> obtenerTodos() {
-        return (List<AlumnoEntity>) alumnoRepository.findAll();
+
+        List<AlumnoEntity> alumnos =
+                new ArrayList<>();
+
+        repository.findAll()
+                .forEach(alumnos::add);
+
+        return alumnos;
+
     }
 
-    @Override
-    public Optional<AlumnoEntity> buscarPorId(Long id) {
-        return alumnoRepository.findById(id);
-    }
-
-    @Override
-    public void eliminar(Long id) {
-        alumnoRepository.deleteById(id);
-    }
 }
