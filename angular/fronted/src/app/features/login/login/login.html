@@ -1,0 +1,102 @@
+<div class="container-fluid min-vh-100 bg-light">
+
+  <div class="row min-vh-100 justify-content-center align-items-center">
+
+    <div class="col-11 col-sm-8 col-md-6 col-lg-4">
+
+      <div class="card shadow-lg border-0 rounded-4">
+
+        <div class="card-body p-5">
+
+          <div class="text-center mb-4">
+
+            <h2 class="fw-bold text-primary">
+              Sistema Inspectoría
+            </h2>
+
+            <p class="text-secondary">
+              Inicia sesión para continuar
+            </p>
+
+          </div>
+
+          <div class="mb-3">
+
+            <label class="form-label">
+              Usuario
+            </label>
+
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              placeholder="Ingrese usuario"
+              [ngModel]="username()"
+              (ngModelChange)="username.set($event)"
+            />
+
+          </div>
+
+          <div class="mb-4">
+
+            <label class="form-label">
+              Contraseña
+            </label>
+
+            <input
+              type="password"
+              class="form-control form-control-lg"
+              placeholder="Ingrese contraseña"
+              [ngModel]="password()"
+              (ngModelChange)="password.set($event)"
+            />
+
+          </div>
+
+          @if (mensajeError()) {
+
+            <div class="alert alert-danger">
+              {{ mensajeError() }}
+            </div>
+
+          }
+
+          <div class="d-grid">
+
+            <button
+              class="btn btn-primary btn-lg"
+              (click)="iniciarSesion()"
+              [disabled]="cargando()"
+            >
+
+              @if (!cargando()) {
+                Iniciar Sesión
+              }
+
+              @if (cargando()) {
+                Cargando...
+              }
+
+            </button>
+
+          </div>
+
+          <div class="text-center mt-4">
+
+            <a
+              routerLink="/"
+              class="text-decoration-none"
+            >
+              Volver al inicio
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

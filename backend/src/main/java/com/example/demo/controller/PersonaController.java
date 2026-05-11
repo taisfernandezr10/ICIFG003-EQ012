@@ -9,7 +9,7 @@ import com.example.demo.interfaces.IPersonaService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/api/v1/entities/persona")
+@RequestMapping("/api/v1/personas") // <-- AQUÍ ESTÁ LA CORRECCIÓN
 public class PersonaController {
 
     @Autowired

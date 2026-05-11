@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @Entity
 @Table(name = "usuario")
@@ -25,13 +24,15 @@ public class UsuarioEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
-    @Column(unique = true)
+    // Quitamos @NonNull y bajamos la restricción directo a la base de datos.
+    // unique = true es vital aquí para que no existan dos usuarios con el mismo username.
+    @Column(unique = true, nullable = false)
     private String username;
 
-    @NonNull
+    @Column(nullable = false)
     private String password;
 
-    @NonNull
+    // Forzamos el nombre con guion bajo para evitar conflictos de camelCase en PostgreSQL
+    @Column(name = "nombre_completo", nullable = false)
     private String nombreCompleto;
 }

@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,10 +11,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @Entity
-@Table(name = "parentezco")
+@Table(name = "parentezco") 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,6 +24,8 @@ public class ParentezcoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
+    // Quitamos @NonNull y bajamos la restricción directo a PostgreSQL. 
+    // Además, agregamos unique = true para que no se repitan los roles.
+    @Column(name = "nombre_parentezco", nullable = false, unique = true)
     private String nombreParentezco; 
 }

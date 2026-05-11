@@ -1,0 +1,31 @@
+section {
+  background: linear-gradient(
+    135deg,
+    #f8f9fa 0%,
+    #e9ecef 100%
+  );
+}
+
+h1 {
+  line-height: 1.2;
+}
+
+img {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}
