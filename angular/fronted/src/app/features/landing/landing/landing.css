@@ -1,31 +1,325 @@
-section {
-  background: linear-gradient(
-    135deg,
-    #f8f9fa 0%,
-    #e9ecef 100%
-  );
+.landing-page {
+
+  min-height: 100vh;
+
+  width: 100vw;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0033a1,
+      #001b5e
+    );
+
+  color: white;
+
 }
 
-h1 {
-  line-height: 1.2;
+/* NAVBAR */
+
+.landing-navbar {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 18px 70px;
+
 }
 
-img {
-  animation: float 3s ease-in-out infinite;
+.brand-image {
+
+  height: 95px;
+
+  object-fit: contain;
+
 }
 
-@keyframes float {
+.nav-links {
 
-  0% {
-    transform: translateY(0px);
+  display: flex;
+
+  align-items: center;
+
+  gap: 30px;
+
+}
+
+.nav-links a {
+
+  text-decoration: none;
+
+  color: rgba(255,255,255,0.82);
+
+  transition: 0.2s ease;
+
+}
+
+.nav-links a:hover {
+
+  color: white;
+
+}
+
+.login-button {
+
+  background: white;
+
+  color: #0033a1 !important;
+
+  padding: 12px 24px;
+
+  border-radius: 14px;
+
+  font-weight: 700;
+
+}
+
+/* HERO */
+
+.hero-container {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+
+  min-height: calc(100vh - 100px);
+
+  padding: 0 70px;
+
+}
+
+/* LEFT */
+
+.hero-left {
+
+  max-width: 650px;
+
+}
+
+.hero-badge {
+
+  display: inline-block;
+
+  background:
+    rgba(255,255,255,0.12);
+
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  margin-bottom: 30px;
+
+  font-size: 14px;
+
+}
+
+.hero-left h1 {
+
+  font-size: 48px;
+
+  line-height: 1.05;
+
+  font-weight: 800;
+
+  margin-bottom: 30px;
+
+}
+
+.hero-left p {
+
+  color: rgba(255,255,255,0.8);
+
+  font-size: 17px;
+
+  line-height: 1.7;
+
+  margin-bottom: 40px;
+
+}
+
+/* BUTTONS */
+
+.hero-buttons {
+
+  display: flex;
+
+  gap: 18px;
+
+  margin-bottom: 50px;
+
+}
+
+.primary-btn {
+
+  background: white;
+
+  color: #0033a1;
+
+  text-decoration: none;
+
+  padding: 18px 28px;
+
+  border-radius: 18px;
+
+  font-weight: 700;
+
+}
+
+.secondary-btn {
+
+  background: transparent;
+
+  border:
+    1px solid rgba(255,255,255,0.25);
+
+  color: white;
+
+  padding: 18px 28px;
+
+  border-radius: 18px;
+
+}
+
+/* MINI CARDS */
+
+.mini-cards {
+
+  display: flex;
+
+  gap: 18px;
+
+  flex-wrap: wrap;
+
+}
+
+.mini-card {
+
+  background:
+    rgba(255,255,255,0.08);
+
+  border:
+    1px solid rgba(255,255,255,0.1);
+
+  border-radius: 20px;
+
+  padding: 22px;
+
+  min-width: 180px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+}
+
+.mini-card i {
+
+  font-size: 28px;
+
+}
+
+.mini-card span {
+
+  color: rgba(255,255,255,0.88);
+
+}
+
+/* RIGHT */
+
+.hero-right {
+
+  display: flex;
+
+  justify-content: center;
+
+}
+
+.school-card {
+
+  width: 440px;
+
+  height: 440px;
+
+  border-radius: 40px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  border:
+    1px solid rgba(255,255,255,0.1);
+
+  backdrop-filter: blur(12px);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+.school-card img {
+
+  width: 88%;
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.25);
+
+  transition: 0.3s ease;
+
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+
+  .hero-container {
+
+    grid-template-columns: 1fr;
+
+    padding: 50px 30px;
+
+    gap: 50px;
+
   }
 
-  50% {
-    transform: translateY(-10px);
+  .landing-navbar {
+
+    padding: 25px 30px;
+
   }
 
-  100% {
-    transform: translateY(0px);
+  .nav-links {
+
+    display: none;
+
+  }
+
+  .hero-left h1 {
+
+    font-size: 52px;
+
+  }
+
+  .school-card {
+
+    width: 100%;
+
+    height: auto;
+
+    padding: 40px;
+
   }
 
 }

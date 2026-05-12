@@ -1,127 +1,144 @@
-<div class="container py-5">
+<div class="dashboard-container">
 
-  <!-- TITULO -->
+  <!-- HEADER -->
 
-  <div class="text-center mb-5">
+  <div class="dashboard-header">
 
-    <h1 class="fw-bold text-primary">
+    <span class="dashboard-badge">
+      Sistema Administrativo
+    </span>
+
+    <h1>
       Panel de Inspectoría
     </h1>
 
-    <p class="text-secondary fs-5">
-      Sistema de Gestión Escolar 2026
+    <p>
+      Gestión moderna de alumnos, matrículas
+      y grupos familiares.
     </p>
 
   </div>
 
-  <!-- CARDS -->
+  <!-- MODULES -->
 
-  <div class="row g-4">
+  <div class="dashboard-grid">
 
     <!-- PERSONAS -->
 
-    <div class="col-12 col-md-6 col-lg-3">
+    <div class="dashboard-card">
 
-      <div class="card shadow border-0 h-100">
+      <div class="card-icon blue">
 
-        <div class="card-body text-center p-4">
-
-          <h3 class="text-primary mb-3">
-            👨‍🎓 Personas
-          </h3>
-
-          <p class="text-secondary">
-            Gestión de alumnos, apoderados y usuarios.
-          </p>
-
-          <a
-            routerLink="/personas"
-            class="btn btn-primary w-100"
-          >
-            Ir al módulo
-          </a>
-
-        </div>
+        <i class="bi bi-people-fill"></i>
 
       </div>
+
+      <h3>
+        Personas
+      </h3>
+
+      <p>
+        Administración de alumnos,
+        apoderados y usuarios.
+      </p>
+
+      <a
+        routerLink="/personas"
+        class="module-button blue-btn"
+      >
+
+        Abrir módulo
+
+      </a>
 
     </div>
 
     <!-- MATRICULAS -->
 
-    <div class="col-12 col-md-6 col-lg-3">
+    <div class="dashboard-card">
 
-      <div class="card shadow border-0 h-100">
+      <div class="card-icon green">
 
-        <div class="card-body text-center p-4">
-
-          <h3 class="text-success mb-3">
-            📚 Matrículas
-          </h3>
-
-          <p class="text-secondary">
-            Administración de matrículas escolares.
-          </p>
-
-          <button class="btn btn-success w-100">
-            Próximamente
-          </button>
-
-        </div>
+        <i class="bi bi-journal-check"></i>
 
       </div>
+
+      <h3>
+        Matrículas
+      </h3>
+
+      <p>
+        Registro y validación
+        de matrículas escolares.
+      </p>
+
+      <a
+        routerLink="/matriculas"
+        class="module-button green-btn"
+      >
+
+        Abrir módulo
+
+      </a>
 
     </div>
 
     <!-- FAMILIAS -->
 
-    <div class="col-12 col-md-6 col-lg-3">
+    <div class="dashboard-card">
 
-      <div class="card shadow border-0 h-100">
+      <div class="card-icon orange">
 
-        <div class="card-body text-center p-4">
-
-          <h3 class="text-warning mb-3">
-            👨‍👩‍👧 Familias
-          </h3>
-
-          <p class="text-secondary">
-            Visualización de grupos familiares.
-          </p>
-
-          <button class="btn btn-warning w-100">
-            Próximamente
-          </button>
-
-        </div>
+        <i class="bi bi-diagram-3-fill"></i>
 
       </div>
+
+      <h3>
+        Familias
+      </h3>
+
+      <p>
+        Visualización de relaciones
+        familiares registradas.
+      </p>
+
+      <a
+        routerLink="/familias"
+        class="module-button orange-btn"
+      >
+
+        Abrir módulo
+
+      </a>
 
     </div>
 
     <!-- CURSOS -->
 
-    <div class="col-12 col-md-6 col-lg-3">
+    <div class="dashboard-card">
 
-      <div class="card shadow border-0 h-100">
+      <div class="card-icon red">
 
-        <div class="card-body text-center p-4">
-
-          <h3 class="text-danger mb-3">
-            🏫 Cursos
-          </h3>
-
-          <p class="text-secondary">
-            Gestión de cursos y niveles académicos.
-          </p>
-
-          <button class="btn btn-danger w-100">
-            Próximamente
-          </button>
-
-        </div>
+        <i class="bi bi-building"></i>
 
       </div>
+
+      <h3>
+        Cursos
+      </h3>
+
+      <p>
+        Gestión de niveles
+        y cursos académicos.
+      </p>
+
+      <button
+        class="module-button red-btn"
+      >
+
+        Próximamente
+
+      </button>
 
     </div>
 

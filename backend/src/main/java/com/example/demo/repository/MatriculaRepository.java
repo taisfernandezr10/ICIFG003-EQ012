@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.MatriculaEntity;
 
 @Repository
-public interface MatriculaRepository extends CrudRepository<MatriculaEntity, Long> {
+public interface MatriculaRepository
+        extends CrudRepository<MatriculaEntity, Long> {
+
+    boolean existsByAlumnoId(Long alumnoId);
 
 }

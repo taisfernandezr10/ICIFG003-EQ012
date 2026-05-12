@@ -3,13 +3,14 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import com.example.demo.dto.MatriculaRequest;
 import com.example.demo.entity.AlumnoEntity;
 import com.example.demo.entity.CursoEntity;
 import com.example.demo.entity.PersonaEntity;
-
 import com.example.demo.entity.MatriculaEntity;
 import com.example.demo.interfaces.IMatriculaService;
+import com.example.demo.repository.MatriculaRepository;
 
 @RestController
 @CrossOrigin(
@@ -28,6 +29,9 @@ public class MatriculaController {
 
     @Autowired
     private IMatriculaService service;
+
+    @Autowired
+    private MatriculaRepository repository;
 
     @GetMapping("")
     public ResponseEntity<?> readMatriculas() {
@@ -71,6 +75,19 @@ public class MatriculaController {
             @RequestBody MatriculaRequest request) {
 
         try {
+
+        	boolean existeMatricula =
+        	        repository.existsByAlumnoId(
+        	                request.getAlumnoId());
+
+            if (existeMatricula) {
+
+                return ResponseEntity
+                        .status(400)
+                        .body(
+                          "El alumno ya posee una matrícula registrada");
+
+            }
 
             AlumnoEntity alumno =
                     new AlumnoEntity();

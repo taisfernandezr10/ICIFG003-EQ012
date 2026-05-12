@@ -1,0 +1,119 @@
+<div class="container py-5">
+
+  <div class="mb-5">
+
+    <h1 class="fw-bold text-warning">
+
+      👨‍👩‍👧 Familias
+
+    </h1>
+
+    <p class="text-secondary">
+
+      Relaciones familiares registradas
+      en el sistema escolar.
+
+    </p>
+
+  </div>
+
+  @if (cargando()) {
+
+    <div class="alert alert-info">
+
+      Cargando familias...
+
+    </div>
+
+  }
+
+  @if (!cargando()) {
+
+    <div class="card shadow border-0">
+
+      <div class="card-body">
+
+        <div class="table-responsive">
+
+          <table
+            class="table table-hover align-middle"
+          >
+
+            <thead class="table-warning">
+
+              <tr>
+
+                <th>Alumno</th>
+
+                <th>Curso</th>
+
+                <th>Sostenedor</th>
+
+                <th>Titular</th>
+
+                <th>Suplente</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              @for (
+                familia of familias();
+                track familia.id
+              ) {
+
+                <tr>
+
+                  <td>
+
+                    {{ familia.alumno.nombre }}
+                    {{ familia.alumno.apellidoPaterno }}
+
+                  </td>
+
+                  <td>
+
+                    {{ familia.curso.nombreCurso }}
+
+                  </td>
+
+                  <td>
+
+                    {{ familia.sostenedor.nombre }}
+                    {{ familia.sostenedor.apellidoPaterno }}
+
+                  </td>
+
+                  <td>
+
+                    {{ familia.apoderadoTitular.nombre }}
+                    {{ familia.apoderadoTitular.apellidoPaterno }}
+
+                  </td>
+
+                  <td>
+
+                    {{ familia.apoderadoSuplente.nombre }}
+                    {{ familia.apoderadoSuplente.apellidoPaterno }}
+
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+
+</div>

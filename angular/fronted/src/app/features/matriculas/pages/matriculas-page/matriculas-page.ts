@@ -41,6 +41,8 @@ implements OnInit {
 
   personas = signal<any[]>([]);
 
+  matriculas = signal<any[]>([]);
+
   cargando = signal(true);
 
   nuevaMatricula = signal<Matricula>({
@@ -100,6 +102,20 @@ implements OnInit {
 
           this.personas.set(data);
 
+        }
+
+      });
+
+    this.http
+      .get<any[]>(
+        'http://localhost:8212/api/v1/matriculas'
+      )
+      .subscribe({
+
+        next: (data) => {
+
+          this.matriculas.set(data);
+
           this.cargando.set(false);
 
         }
@@ -132,13 +148,24 @@ implements OnInit {
             'Matrícula registrada correctamente'
           );
 
+          this.matriculas.update(lista => [
+            ...lista,
+            response
+          ]);
+
         },
 
         error: (error) => {
 
           console.error(error);
 
+          alert(
+            error.error.message ||
+            error.error ||
+            'Error al registrar matrícula'
+          );
         }
+            
 
       });
 

@@ -24,7 +24,9 @@
 
   @if (!cargando()) {
 
-    <div class="card shadow border-0">
+    <!-- FORMULARIO -->
+
+    <div class="card shadow border-0 mb-5">
 
       <div class="card-body p-4">
 
@@ -240,6 +242,107 @@
             Confirmar Matrícula
 
           </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TABLA -->
+
+    <div class="card shadow border-0">
+
+      <div class="card-body">
+
+        <h3 class="fw-bold mb-4 text-primary">
+
+          Matrículas Registradas
+
+        </h3>
+
+        <div class="table-responsive">
+
+          <table class="table table-hover align-middle">
+
+            <thead class="table-primary">
+
+              <tr>
+
+                <th>ID</th>
+
+                <th>Alumno</th>
+
+                <th>Curso</th>
+
+                <th>Apoderado Titular</th>
+
+                <th>Estado</th>
+
+                <th>Fecha</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              @for (
+                matricula of matriculas();
+                track matricula.id
+              ) {
+
+                <tr>
+
+                  <td>
+
+                    {{ matricula.id }}
+
+                  </td>
+
+                  <td>
+
+                    {{ matricula.alumno.nombre }}
+                    {{ matricula.alumno.apellidoPaterno }}
+
+                  </td>
+
+                  <td>
+
+                    {{ matricula.curso.nombreCurso }}
+
+                  </td>
+
+                  <td>
+
+                    {{ matricula.apoderadoTitular.nombre }}
+                    {{ matricula.apoderadoTitular.apellidoPaterno }}
+
+                  </td>
+
+                  <td>
+
+                    <span class="badge bg-success">
+
+                      {{ matricula.estado }}
+
+                    </span>
+
+                  </td>
+
+                  <td>
+
+                    {{ matricula.fechaMatricula }}
+
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
 
         </div>
 
