@@ -1,19 +1,43 @@
 <div class="container py-5">
 
-  <div class="mb-5">
+  <!-- HEADER -->
 
-    <h1 class="fw-bold text-warning">
+  <div class="mb-4">
 
-      👨‍👩‍👧 Familias
+    <h1 class="fw-bold text-primary">
+
+      Familias
 
     </h1>
 
     <p class="text-secondary">
 
-      Relaciones familiares registradas
-      en el sistema escolar.
+      Consulta alumnos y sus apoderados
 
     </p>
+
+  </div>
+
+  <!-- BUSCADOR -->
+
+  <div class="card shadow-sm border-0 mb-4">
+
+    <div class="card-body">
+
+      <label class="form-label fw-semibold">
+
+        Buscar por apellido del alumno
+
+      </label>
+
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        [ngModel]="filtroApellido()"
+        (ngModelChange)="filtroApellido.set($event)"
+      >
+
+    </div>
 
   </div>
 
@@ -60,7 +84,7 @@
             <tbody>
 
               @for (
-                familia of familias();
+                familia of familiasFiltradas();
                 track familia.id
               ) {
 
@@ -68,8 +92,18 @@
 
                   <td>
 
-                    {{ familia.alumno.nombre }}
-                    {{ familia.alumno.apellidoPaterno }}
+                    <div class="fw-semibold">
+
+                      {{ familia.alumno.nombre }}
+                      {{ familia.alumno.apellidoPaterno }}
+
+                    </div>
+
+                    <small class="text-muted">
+
+                      {{ familia.alumno.rut }}
+
+                    </small>
 
                   </td>
 

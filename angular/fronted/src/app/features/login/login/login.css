@@ -7,11 +7,17 @@
   min-height: 100vh;
 
   background:
-    linear-gradient(
-      135deg,
-      #072b8a 0%,
-      #03174f 100%
-    );
+  linear-gradient(
+    rgba(0,0,0,0.30),
+    rgba(0,0,0,0.30)
+  ),
+  url('/fondo-login.png');
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
 
   display: flex;
 
@@ -22,6 +28,8 @@
   position: relative;
 
   overflow: hidden;
+
+  
 }
 
 .login-overlay {
@@ -34,9 +42,11 @@
   background:
     radial-gradient(
       circle at top left,
-      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.5),
       transparent 40%
     );
+
+  filter: blur(40px);
 }
 
 .login-card {
@@ -50,8 +60,11 @@
   border-radius: 30px;
 
   background:
-    rgba(255,255,255,0.08);
-
+    linear-gradient(
+      180deg,
+     #1d3b91 0%,
+      #18357c 100%
+    );
   backdrop-filter: blur(18px);
 
   border:
@@ -112,17 +125,19 @@
 
 .input-group input {
 
+  display: block;
+
   width: 100%;
 
-  padding: 16px 18px;
+  padding: 16px 20px;
 
-  border-radius: 14px;
+  border-radius: 14px !important;
 
   border:
-    1px solid rgba(255,255,255,0.12);
+    1px solid rgba(255,255,255,0.12) !important;
 
   background:
-    rgba(255,255,255,0.08);
+    rgba(255,255,255,0.08) !important;
 
   color: white;
 
@@ -132,10 +147,15 @@
 
   box-sizing: border-box;
 
+  box-shadow: none !important;
+
+}
+
+input {
+
   appearance: none;
 
   -webkit-appearance: none;
-
 }
 
 .input-group input::placeholder {
@@ -194,3 +214,4 @@ button:hover {
 
   color: white;
 }
+

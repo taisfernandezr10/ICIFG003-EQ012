@@ -2,13 +2,19 @@ import {
   Component,
   OnInit,
   inject,
-  signal
+  signal,
+  computed
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-import { HttpClient }
-from '@angular/common/http';
+import {
+  HttpClient
+} from '@angular/common/http';
+
+import {
+  FormsModule
+} from '@angular/forms';
 
 @Component({
   selector: 'app-familias-page',
@@ -16,7 +22,8 @@ from '@angular/common/http';
   standalone: true,
 
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
 
   templateUrl: './familias-page.html',
@@ -35,6 +42,34 @@ implements OnInit {
 
   cargando =
     signal(true);
+
+  filtroApellido =
+    signal('');
+
+  familiasFiltradas = computed(() => {
+
+    const filtro =
+      this.filtroApellido()
+        .toLowerCase()
+        .trim();
+
+    if (!filtro) {
+
+      return this.familias();
+
+    }
+
+    return this.familias().filter(familia => {
+
+      const apellido =
+        familia.alumno.apellidoPaterno
+          ?.toLowerCase() || '';
+
+      return apellido.includes(filtro);
+
+    });
+
+  });
 
   ngOnInit(): void {
 

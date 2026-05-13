@@ -12,10 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 import { MatriculaService }
-from '../../services/matricula.service';
+from '../../../../core/services/matricula.service';
 
 import { Matricula }
-from '../../models/matricula.model';
+from '../../../../core/models/matricula.model';
 
 @Component({
   selector: 'app-matriculas-page',
@@ -39,7 +39,7 @@ implements OnInit {
 
   cursos = signal<any[]>([]);
 
-  personas = signal<any[]>([]);
+  apoderados = signal<any[]>([]);
 
   matriculas = signal<any[]>([]);
 
@@ -64,19 +64,7 @@ implements OnInit {
 
   cargarDatos(): void {
 
-    this.http
-      .get<any[]>(
-        'http://localhost:8212/api/v1/alumnos'
-      )
-      .subscribe({
-
-        next: (data) => {
-
-          this.alumnos.set(data);
-
-        }
-
-      });
+    // CURSOS
 
     this.http
       .get<any[]>(
@@ -92,6 +80,8 @@ implements OnInit {
 
       });
 
+    // PERSONAS
+
     this.http
       .get<any[]>(
         'http://localhost:8212/api/v1/personas'
@@ -100,11 +90,35 @@ implements OnInit {
 
         next: (data) => {
 
-          this.personas.set(data);
+          // SOLO ESTUDIANTES
+
+          const estudiantes =
+            data.filter(
+              p => p.rol === 'ESTUDIANTE'
+            );
+
+          // TODOS MENOS ESTUDIANTES
+
+          const apoderados =
+            data.filter(
+              p => p.rol !== 'ESTUDIANTE'
+            );
+
+          this.alumnos.set(estudiantes);
+
+          this.apoderados.set(apoderados);
+
+        },
+
+        error: (error) => {
+
+          console.error(error);
 
         }
 
       });
+
+    // MATRICULAS
 
     this.http
       .get<any[]>(
@@ -115,6 +129,14 @@ implements OnInit {
         next: (data) => {
 
           this.matriculas.set(data);
+
+          this.cargando.set(false);
+
+        },
+
+        error: (error) => {
+
+          console.error(error);
 
           this.cargando.set(false);
 
@@ -148,10 +170,20 @@ implements OnInit {
             'Matrícula registrada correctamente'
           );
 
-          this.matriculas.update(lista => [
-            ...lista,
-            response
-          ]);
+          this.http
+            .get<any[]>(
+             'http://localhost:8212/api/v1/matriculas'
+           )
+          .subscribe({
+
+            next: (data) => {
+
+              this.matriculas.set(data);
+
+          }
+       });
+
+
 
         },
 
@@ -164,8 +196,8 @@ implements OnInit {
             error.error ||
             'Error al registrar matrícula'
           );
+
         }
-            
 
       });
 

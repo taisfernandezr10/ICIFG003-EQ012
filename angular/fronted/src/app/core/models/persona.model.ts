@@ -5,4 +5,5 @@ export interface Persona {
     apellidoPaterno: string;
     apellidoMaterno: string;
     direccion: string;
+    rol: string;
 }

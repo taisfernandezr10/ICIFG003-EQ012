@@ -1,0 +1,44 @@
+.custom-navbar {
+
+  background:
+    linear-gradient(
+      135deg,
+      #0033a1,
+      #001b5e
+    );
+
+  padding-top: 10px;
+
+  padding-bottom: 10px;
+
+}
+
+.nav-link {
+
+  color: rgba(255,255,255,0.78) !important;
+
+  font-weight: 500;
+
+  transition: 0.2s ease;
+}
+
+.nav-link:hover {
+
+  color: white !important;
+}
+
+.navbar {
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.08);
+}
+
+.navbar .container {
+
+  max-width: 100%;
+
+  padding-left: 35px;
+
+  padding-right: 40px;
+
+}

@@ -8,8 +8,8 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { PersonaService } from '../../services/persona.service';
-import { Persona } from '../../models/persona.model';
+import { PersonaService } from '../../../../core/services/persona.service';
+import { Persona } from '../../../../core/models/persona.model';
 
 @Component({
   selector: 'app-personas-page',
@@ -41,7 +41,8 @@ export class PersonasPage implements OnInit {
     nombre: '',
     apellidoPaterno: '',
     apellidoMaterno: '',
-    direccion: ''
+    direccion: '',
+    rol: ''
   });
 
   ngOnInit(): void {
@@ -103,6 +104,7 @@ export class PersonasPage implements OnInit {
       .subscribe({
 
         next: (personaGuardada) => {
+          alert('Persona registrada correctamente');
 
           this.personas.update(lista => [
             ...lista,
@@ -149,6 +151,7 @@ export class PersonasPage implements OnInit {
       .subscribe({
 
         next: (personaActualizada) => {
+          alert('Persona actualizada correctamente');
 
           this.personas.update(lista =>
             lista.map(p =>
@@ -184,6 +187,7 @@ export class PersonasPage implements OnInit {
       .subscribe({
 
         next: () => {
+          alert('Persona eliminada correctamente');
 
           this.personas.update(lista =>
             lista.filter(p => p.id !== id)
@@ -195,7 +199,11 @@ export class PersonasPage implements OnInit {
 
           console.error(error);
 
-        }
+          alert(
+            'No se puede eliminar esta persona porque está asociada a una matrícula.'
+          );
+
+}
 
       });
 
@@ -208,7 +216,8 @@ export class PersonasPage implements OnInit {
       nombre: '',
       apellidoPaterno: '',
       apellidoMaterno: '',
-      direccion: ''
+      direccion: '',
+      rol: ''
     });
 
     this.modoEdicion.set(false);

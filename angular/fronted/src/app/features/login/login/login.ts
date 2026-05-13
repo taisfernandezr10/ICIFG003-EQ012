@@ -54,9 +54,7 @@ export class Login {
 
         this.cargando.set(false);
 
-        this.mensajeError.set(
-          error.error || 'Error al iniciar sesión'
-        );
+        alert('Usuario o contraseña incorrectos');
       }
 
     });

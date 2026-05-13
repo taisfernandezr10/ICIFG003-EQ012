@@ -37,14 +37,10 @@ public class MatriculaEntity {
     @Column(name = "estado_matricula", nullable = false)
     private String estado;
 
-    /* =========================================================
-       RELACIONES DEL NEGOCIO (EL "CORE" DE LA MATRÍCULA)
-       ========================================================= */
-
     // 1. ¿A qué alumno pertenece esta matrícula?
     @ManyToOne
     @JoinColumn(name = "id_alumno", nullable = false)
-    private AlumnoEntity alumno;
+    private PersonaEntity alumno;
 
     // 2. ¿En qué curso se está matriculando?
     @ManyToOne

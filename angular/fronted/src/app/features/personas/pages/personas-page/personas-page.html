@@ -113,6 +113,58 @@
 
           </div>
 
+          <div class="col-md-6">
+
+            <label class="form-label">
+              Rol
+            </label>
+
+            <select
+              class="form-select"
+              [(ngModel)]="nuevaPersona().rol"
+              name="rol"
+            >
+
+              <option value="">
+                Seleccione rol
+              </option>
+
+              <option value="ESTUDIANTE">
+                 Estudiante
+              </option>
+
+              <option value="PADRE">
+                Padre
+              </option>
+
+              <option value="MADRE">
+                Madre
+              </option>
+
+              <option value="ABUELO">
+                 Abuelo
+              </option>
+
+               <option value="ABUELA">
+                Abuela
+              </option>
+
+                <option value="TUTOR">
+                 Tutor
+                </option>
+
+              <option value="FAMILIAR">
+                Familiar
+              </option>
+
+               <option value="OTRO">
+                  Otro
+               </option>
+
+  </select>
+
+</div>
+
         </div>
 
         <div class="d-flex gap-2">
@@ -174,7 +226,9 @@
                 <th>Nombre</th>
                 <th>Apellido Paterno</th>
                 <th>Dirección</th>
+                <th>Rol</th>
                 <th>Acciones</th>
+                
 
               </tr>
 
@@ -195,6 +249,8 @@
                   <td>{{ persona.apellidoPaterno }}</td>
 
                   <td>{{ persona.direccion }}</td>
+
+                    <td>{{ persona.rol }}</td>
 
                   <td>
 

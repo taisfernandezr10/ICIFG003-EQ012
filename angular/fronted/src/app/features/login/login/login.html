@@ -18,7 +18,7 @@
       Accede al sistema administrativo escolar
     </p>
 
-    <form>
+    <form (ngSubmit)="iniciarSesion()">
 
       <div class="input-group">
 
@@ -27,9 +27,12 @@
         </label>
 
         <input
-          type="text"
+         type="text"
           placeholder="Ingrese usuario"
-        >
+          [ngModel]="username()"
+          (ngModelChange)="username.set($event)"
+          name="username"
+      >
 
       </div>
 
@@ -42,6 +45,9 @@
         <input
           type="password"
           placeholder="Ingrese contraseña"
+          [ngModel]="password()"
+          (ngModelChange)="password.set($event)"
+          name="password"
         >
 
       </div>

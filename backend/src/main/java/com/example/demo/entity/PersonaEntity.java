@@ -25,14 +25,12 @@ public class PersonaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Quitamos @NonNull y bajamos la restricción directo a la base de datos
     @Column(unique = true, nullable = false)
     private String rut;
 
     @Column(nullable = false)
     private String nombre;
 
-    // Evitamos problemas de camelCase en PostgreSQL
     @Column(name = "apellido_paterno", nullable = false)
     private String apellidoPaterno;
     
@@ -40,4 +38,7 @@ public class PersonaEntity {
     private String apellidoMaterno; 
     
     private String direccion;
+    
+    @Column(nullable = false)
+    private String rol;
 }
