@@ -72,8 +72,6 @@ A diferencia de la versión anterior en NetBeans, este sistema utiliza:
 ## 1. Clonar el repositorio
 
 Abrir CMD y ejecutar:
-
-```bash
 git clone https://github.com/taisfernandezr10/ICIFG003-EQ012.git
 
 # Configuración de Base de Datos PostgreSQL
