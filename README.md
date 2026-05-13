@@ -1,23 +1,40 @@
-# Sistema de Inspectoría: Gestión de Matrículas y Personas (2026)
+# Sistema de Inspectoría  
+## Gestión de Matrículas y Personas (2026)
 
-Este sistema es una evolución del prototipo 2025, ahora desarrollado como una aplicación web.
+Sistema web desarrollado para la administración de matrículas escolares y gestión de personas dentro del área de inspectoría.
 
-A diferencia de la versión anterior en NetBeans, este sistema utiliza:
+Esta aplicación corresponde a la evolución del prototipo desarrollado en 2025, migrando desde una solución de escritorio en NetBeans hacia una arquitectura web moderna.
 
-- **Backend:** Java 17 con Spring Boot
-- **Frontend:** Angular
-- **Base de Datos:** PostgreSQL
+---
+
+# Tecnologías Utilizadas
+
+## Frontend
+- Angular
+- TypeScript
+- Bootstrap
+- HTML5
+- CSS3
+
+## Backend
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- Hibernate
+- Maven
+
+## Base de Datos
+- PostgreSQL
 
 ---
 
 # Funcionalidades del Sistema
 
 ## Gestión de Personas
-
 - Registro de personas
 - Edición de información
 - Eliminación de personas
-- Gestión de roles:
+- Administración de roles:
   - Estudiante
   - Padre
   - Madre
@@ -28,9 +45,8 @@ A diferencia de la versión anterior en NetBeans, este sistema utiliza:
 ---
 
 ## Gestión de Matrículas
-
 - Registro de matrículas escolares
-- Asignación de estudiante
+- Asignación de estudiantes
 - Selección de apoderados
 - Validación de matrícula existente
 - Gestión de cursos académicos
@@ -38,93 +54,134 @@ A diferencia de la versión anterior en NetBeans, este sistema utiliza:
 ---
 
 ## Gestión Familiar
-
 - Visualización de grupos familiares
 - Relación entre alumnos y apoderados
-- Búsqueda por apellido del alumno
+- Búsqueda por apellido del estudiante
 
 ---
 
-# Tecnologías Utilizadas
+# Arquitectura del Proyecto
 
-## Frontend
+```bash
+/frontend   -> Aplicación Angular
+/backend    -> API REST Spring Boot
+/database   -> PostgreSQL
+```
 
-- Angular
-- TypeScript
-- Bootstrap
-- HTML5
-- CSS3
+---
 
-## Backend
+# Instalación y Configuración
 
-- Java 17
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- Maven
+## 1. Clonar el Repositorio
 
-## Base de Datos
+Abrir CMD o terminal y ejecutar:
 
-- PostgreSQL
-
-# Instalación del Proyecto
-## 1. Clonar el repositorio
-Abrir CMD y ejecutar:
+```bash
 git clone https://github.com/taisfernandezr10/ICIFG003-EQ012.git
+```
 
-# Configuración de Base de Datos PostgreSQL
+---
+
+# Configuración de PostgreSQL
+
 ## 2. Ingresar a PostgreSQL
-Abrir CMD y ejecutar:
+
+```bash
 psql -U postgres
+```
 
 Ingresar contraseña:
+
+```bash
 1234
+```
 
-## 3. Crear Base de Datos
+---
+
+## 3. Crear la Base de Datos
+
 Dentro de PostgreSQL ejecutar:
-CREATE DATABASE inspectoria;
 
-## 4. Crear Usuario Administrador para el Login
+```sql
+CREATE DATABASE inspectoria;
+```
+
+---
+
+## 4. Crear Usuario Administrador
+
 Conectarse a la base de datos:
+
+```sql
 \c inspectoria
+```
 
 Insertar usuario administrador:
+
+```sql
 INSERT INTO usuario (username, password)
 VALUES ('admin', '1234');
+```
 
-Credenciales de Prueba
-Usuario: admin
-contraseña: 1234
+---
 
-## Ejecucion del backend
-##5. Ejecutar Spring Boot
-1. Abrir la carpeta backend en spring tool suite
-2. Esperar que Maven cargue las dependencias
+# Credenciales de Prueba
+
+| Usuario | Contraseña |
+|----------|-------------|
+| admin | 1234 |
+
+---
+
+# Ejecución del Backend
+
+## 5. Ejecutar Spring Boot
+
+1. Abrir la carpeta `backend` en Spring Tool Suite (STS)
+2. Esperar que Maven descargue las dependencias
 3. Ejecutar el proyecto Spring Boot
 
-Backend ejecutándose en:
-http://localhost:8212
+Backend disponible en:
 
-## Ejecución del Frontend
-##6. Ejecutar Angular
-1. Abrir la carpeta frontend en Visual Studio Code
+```bash
+http://localhost:8212
+```
+
+---
+
+# Ejecución del Frontend
+
+## 6. Ejecutar Angular
+
+1. Abrir la carpeta `frontend` en Visual Studio Code
 2. Abrir una terminal dentro del proyecto
 3. Ejecutar:
+
+```bash
 npm install
-Luego ejecutar:
+```
+
+Luego iniciar Angular con:
+
+```bash
 ng serve
+```
 
-Frontend ejecutándose en:
+Frontend disponible en:
+
+```bash
 http://localhost:4200
+```
 
+---
 
+# Características Técnicas
 
+- Arquitectura Cliente-Servidor
+- API REST con Spring Boot
+- Persistencia de datos con JPA/Hibernate
+- Integración Frontend-Backend mediante HTTP
+- Base de datos relacional PostgreSQL
+- Interfaz responsive utilizando Bootstrap
 
-
-
-
-
-
-
-
-
+---
