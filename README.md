@@ -2,7 +2,7 @@
 ## Gestión de Matrículas y Personas (2026)
 Sistema web desarrollado para la administración de matrículas escolares y gestión de personas dentro del área de inspectoría.
 
-Esta aplicación corresponde a la evolución del prototipo desarrollado en 2025, migrando desde una solución de escritorio en NetBeans hacia una arquitectura web moderna.
+Este proyecto es la evolución del prototipo que desarrollamos en 2025. Transformamos lo que era una aplicación de escritorio en NetBeans en una plataforma web moderna
 
 ---
 
