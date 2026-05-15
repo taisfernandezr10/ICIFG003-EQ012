@@ -1,154 +1,144 @@
-# Sistema de Inspectoría  
-## Gestión de Matrículas y Personas (2026)
-Sistema web desarrollado para la administración de matrículas escolares y gestión de personas dentro del área de inspectoría.
+# Sistema de Inspectoría Escolar 2026
 
-Este proyecto es la evolución del prototipo que desarrollamos en 2025. Transformamos lo que era una aplicación de escritorio en NetBeans en una plataforma web moderna
+Sistema web desarrollado para la gestión de personas, matrículas, familias y cursos dentro del área de inspectoría escolar.
 
----
+Este proyecto es la evolución del prototipo desarrollado en 2025. Transformamos una aplicación de escritorio creada en NetBeans en una plataforma web moderna.
 
-# Tecnologías Utilizadas
-## Frontend
-- Angular
-- TypeScript
-- Bootstrap
-- HTML5
-- CSS3
+## Tecnologías Utilizadas
 
-## Backend
-- Java 17
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- Maven
-
-## Base de Datos
-- PostgreSQL
+- Backend: Spring Boot + Java 17
+- Frontend: Angular
+- Base de datos: PostgreSQL
 
 ---
 
 # Funcionalidades del Sistema
+
 ## Gestión de Personas
-- Registro de personas
-- Edición de información
-- Eliminación de personas
-- Administración de roles:
-  - Estudiante
-  - Padre
-  - Madre
-  - Abuelo
-  - Familiar
-  - Otro
+
+- Registro de estudiantes y apoderados
+- Edición de registros
+- Eliminación controlada
+- Gestión de roles familiares
 
 ---
 
 ## Gestión de Matrículas
+
 - Registro de matrículas escolares
-- Asignación de estudiantes
+- Asociación de alumno y curso
 - Selección de apoderados
-- Validación de matrícula existente
-- Gestión de cursos académicos
+- Gestión de sostenedor y responsables
+- Edición y eliminación de matrículas
 
 ---
 
 ## Gestión Familiar
-- Visualización de grupos familiares
-- Relación entre alumnos y apoderados
+
+- Visualización de relaciones familiares
 - Búsqueda por apellido del estudiante
 
 ---
 
-# Arquitectura del Proyecto
-```bash
-/frontend   -> Aplicación Angular
-/backend    -> API REST Spring Boot
-/database   -> PostgreSQL
-```
+## Gestión de Cursos
+
+- Registro de cursos académicos
+- Asociación de nivel y año académico
+- Edición y eliminación de cursos
 
 ---
 
 # Instalación y Configuración
-## 1. Clonar el Repositorio
 
-Abrir CMD o terminal y ejecutar:
-```bash
-git clone https://github.com/taisfernandezr10/ICIFG003-EQ012.git
-```
+## 1. Configuración Base de Datos
 
----
+Crear una base de datos PostgreSQL llamada:
 
-# Configuración de PostgreSQL
-## 2. Ingresar a PostgreSQL
-```bash
-psql -U postgres
-```
-Ingresar contraseña:
-```bash
-1234
-```
-
----
-
-## 3. Crear la Base de Datos
-Dentro de PostgreSQL ejecutar:
 ```sql
 CREATE DATABASE inspectoria;
 ```
 
 ---
 
-## 4. Crear Usuario Administrador
-Conectarse a la base de datos:
-```sql
-\c inspectoria
+## 2. Ejecutar Backend
+
+Abrir una terminal dentro de la carpeta:
+
+```plaintext
+backend
 ```
 
-Insertar usuario administrador:
-```sql
-INSERT INTO usuario (username, password)
-VALUES ('admin', '1234');
-```
+Ejecutar:
 
----
-
-# Credenciales de Prueba
-| Usuario | Contraseña |
-|----------|-------------|
-| admin | 1234 |
-
----
-
-# Ejecución del Backend
-## 5. Ejecutar Spring Boot
-1. Abrir la carpeta `backend` en Spring Tool Suite (STS)
-2. Esperar que Maven descargue las dependencias
-3. Ejecutar el proyecto Spring Boot
-
-Backend disponible en:
 ```bash
+mvnw.cmd spring-boot:run
+```
+
+El backend quedará disponible en:
+
+```plaintext
 http://localhost:8212
 ```
 
 ---
 
-# Ejecución del Frontend
-## 6. Ejecutar Angular
+## 3. Ejecutar Frontend
 
-1. Abrir la carpeta `frontend` en Visual Studio Code
-2. Abrir una terminal dentro del proyecto
-3. Ejecutar:
+Abrir Visual Studio Code y luego abrir una terminal dentro de la carpeta:
+
+```plaintext
+frontend
+```
+
+Instalar dependencias:
+
 ```bash
 npm install
 ```
 
-Luego iniciar Angular con:
+Ejecutar Angular:
+
 ```bash
 ng serve
 ```
 
-Frontend disponible en:
-```bash
+El frontend quedará disponible en:
+
+```plaintext
 http://localhost:4200
 ```
 
 ---
 
+## 4. Credenciales Demo
+
+El sistema crea automáticamente un usuario administrador al iniciar el backend.
+
+### Usuario
+
+```plaintext
+admin
+```
+
+### Contraseña
+
+```plaintext
+1234
+```
+
+---
+
+## 5. Cursos Demo
+
+Al iniciar el backend se crean automáticamente cursos de prueba:
+
+- 1ero Básico
+- 2do Básico
+- 3ero Medio
+
+---
+
+# Integrantes
+
+- Tais Fernandez
+- Carlos Ignacio Pino
