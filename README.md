@@ -71,7 +71,7 @@ backend
 Ejecutar:
 
 ```bash
-mvnw.cmd spring-boot:run
+mvnw spring-boot:run
 ```
 
 El backend quedará disponible en:
