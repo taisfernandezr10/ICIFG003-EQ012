@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.dto.MatriculaRequest;
 import com.example.demo.entity.AlumnoEntity;
@@ -157,20 +159,106 @@ public class MatriculaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(
-            @PathVariable Long id) {
+    public ResponseEntity<?> eliminarMatricula(
+            @PathVariable Long id
+    ) {
 
         try {
 
             service.eliminar(id);
 
-            return ResponseEntity.ok("[]");
+            return ResponseEntity.ok(
+                    "Matrícula eliminada"
+            );
 
         } catch (Exception e) {
 
+            e.printStackTrace();
+
             return ResponseEntity
-                    .status(404)
-                    .body(e);
+                    .badRequest()
+                    .body(e.getMessage());
+
+        }
+
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<?> actualizarMatricula(
+            @PathVariable Long id,
+            @RequestBody MatriculaRequest request
+    ) {
+
+        try {
+
+            AlumnoEntity alumno =
+                    new AlumnoEntity();
+
+            alumno.setId(
+                    request.getAlumnoId());
+
+            CursoEntity curso =
+                    new CursoEntity();
+
+            curso.setId(
+                    request.getCursoId());
+
+            PersonaEntity sostenedor =
+                    new PersonaEntity();
+
+            sostenedor.setId(
+                    request.getSostenedorId());
+
+            PersonaEntity titular =
+                    new PersonaEntity();
+
+            titular.setId(
+                    request.getApoderadoTitularId());
+
+            PersonaEntity suplente =
+                    new PersonaEntity();
+
+            suplente.setId(
+                    request.getApoderadoSuplenteId());
+
+            MatriculaEntity matricula =
+                    MatriculaEntity.builder()
+
+                    .alumno(alumno)
+
+                    .curso(curso)
+
+                    .sostenedor(sostenedor)
+
+                    .apoderadoTitular(titular)
+
+                    .apoderadoSuplente(suplente)
+
+                    .anioAcademico(
+                            request.getAnioAcademico())
+
+                    .fechaMatricula(
+                            request.getFechaMatricula())
+
+                    .estado(
+                            request.getEstado())
+
+                    .build();
+
+            return ResponseEntity.ok(
+                    service.actualizar(
+                            id,
+                            matricula
+                    )
+            );
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return ResponseEntity
+                    .badRequest()
+                    .body(e.getMessage());
 
         }
 

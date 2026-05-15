@@ -27,4 +27,29 @@ export class MatriculaService {
 
   }
 
+  eliminarMatricula(
+  id: number
+): Observable<any> {
+
+  return this.http.delete(
+    `${this.API_URL}/${id}`,
+    {
+      responseType: 'text'
+    }
+  );
+
+}
+
+actualizarMatricula(
+  id: number,
+  matricula: any
+): Observable<any> {
+
+  return this.http.put(
+    `${this.API_URL}/${id}`,
+    matricula
+  );
+
+}
+
 }

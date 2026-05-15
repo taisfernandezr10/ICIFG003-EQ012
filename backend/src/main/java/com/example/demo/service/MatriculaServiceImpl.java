@@ -34,4 +34,53 @@ public class MatriculaServiceImpl implements IMatriculaService {
     public void eliminar(Long id) {
         matriculaRepository.deleteById(id);
     }
+    
+    @Override
+    public MatriculaEntity actualizar(
+            Long id,
+            MatriculaEntity matriculaActualizada
+    ) {
+
+        MatriculaEntity matricula =
+                matriculaRepository
+                        .findById(id)
+                        .orElseThrow();
+
+        matricula.setEstado(
+                matriculaActualizada.getEstado()
+        );
+
+        matricula.setFechaMatricula(
+                matriculaActualizada.getFechaMatricula()
+        );
+
+        matricula.setAnioAcademico(
+                matriculaActualizada.getAnioAcademico()
+        );
+
+        matricula.setAlumno(
+                matriculaActualizada.getAlumno()
+        );
+
+        matricula.setCurso(
+                matriculaActualizada.getCurso()
+        );
+
+        matricula.setSostenedor(
+                matriculaActualizada.getSostenedor()
+        );
+
+        matricula.setApoderadoTitular(
+                matriculaActualizada.getApoderadoTitular()
+        );
+
+        matricula.setApoderadoSuplente(
+                matriculaActualizada.getApoderadoSuplente()
+        );
+
+        return matriculaRepository.save(
+                matricula
+        );
+
+    }
 }

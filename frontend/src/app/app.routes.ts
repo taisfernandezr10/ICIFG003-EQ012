@@ -69,10 +69,21 @@ export const routes: Routes = [
   },
 
   {
-    path: '**',
+  path: 'cursos',
 
-    redirectTo: ''
+  loadComponent: () =>
 
-  }
+    import(
+      './features/cursos/pages/cursos-page'
+    ).then(m => m.CursosPage)
+
+},
+
+{
+  path: '**',
+
+  redirectTo: ''
+
+}
 
 ];

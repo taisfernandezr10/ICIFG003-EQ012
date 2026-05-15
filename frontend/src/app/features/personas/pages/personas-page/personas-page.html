@@ -9,13 +9,13 @@
       </h1>
 
       <p class="text-secondary mb-0">
-        Administración de alumnos y apoderados
+        Registre nuevas personas haciendo clic en “Nueva Persona”
       </p>
 
     </div>
 
     <button
-      class="btn btn-primary"
+      class="btn btn-success"
       (click)="abrirFormulario()"
     >
       + Nueva Persona
@@ -24,6 +24,8 @@
   </div>
 
   @if (mostrarFormulario()) {
+
+    
 
     <div class="card shadow border-0 mb-4">
 
@@ -210,6 +212,11 @@
   }
 
   @if (!cargando()) {
+    <h4 class="mb-0 fw-bold section-title">
+
+      Personas Registradas
+
+    </h4>
 
     <div class="card shadow border-0">
 
@@ -226,7 +233,7 @@
                 <th>ID</th>
                 <th>RUT</th>
                 <th>Nombre</th>
-                <th>Apellido Paterno</th>
+                <th>Apellido</th>
                 <th>Dirección</th>
                 <th>Rol</th>
                 <th>Acciones</th>

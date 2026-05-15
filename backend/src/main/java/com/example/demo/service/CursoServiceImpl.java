@@ -41,6 +41,32 @@ public class CursoServiceImpl
     }
 
     @Override
+    public CursoEntity actualizar(
+            Long id,
+            CursoEntity cursoActualizado
+    ) {
+
+        CursoEntity curso = cursoRepository
+                .findById(id)
+                .orElseThrow();
+
+        curso.setNombreCurso(
+                cursoActualizado.getNombreCurso()
+        );
+
+        curso.setNivel(
+                cursoActualizado.getNivel()
+        );
+
+        curso.setAnioAcademico(
+                cursoActualizado.getAnioAcademico()
+        );
+
+        return cursoRepository.save(curso);
+
+    }
+
+    @Override
     public void eliminar(Long id) {
 
         cursoRepository.deleteById(id);

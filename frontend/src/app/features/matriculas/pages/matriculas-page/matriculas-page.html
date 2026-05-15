@@ -100,7 +100,7 @@
 
                 <option [value]="curso.id">
 
-                  {{ curso.nombreCurso }}
+                  {{ curso.nombreCurso }} {{ curso.nivel }}
 
                 </option>
 
@@ -235,7 +235,7 @@
         <div class="d-grid mt-3">
 
           <button
-            class="btn btn-primary btn-lg"
+            class="btn btn-success"
             (click)="guardarMatricula()"
           >
 
@@ -251,15 +251,27 @@
 
     <!-- TABLA -->
 
+    <h4 class="mb-1 fw-bold section-title">
+
+       Matrículas Registradas
+
+    </h4>
+
     <div class="card shadow border-0">
 
       <div class="card-body">
 
-        <h3 class="fw-bold mb-4 text-primary">
+        <div class="mb-4">
 
-          Matrículas Registradas
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Buscar alumno..."
+            [ngModel]="busquedaAlumno()"
+            (ngModelChange)="busquedaAlumno.set($event)"
+          />
 
-        </h3>
+        </div>
 
         <div class="table-responsive">
 
@@ -281,6 +293,10 @@
 
                 <th>Fecha</th>
 
+                <th style="width: 140px;">
+                  Acciones
+                </th>
+
               </tr>
 
             </thead>
@@ -288,11 +304,13 @@
             <tbody>
 
               @for (
-                matricula of matriculas();
+                matricula of matriculasFiltradas();
                 track matricula.id
               ) {
 
                 <tr>
+
+                  
 
                   <td>
 
@@ -333,6 +351,28 @@
                   <td>
 
                     {{ matricula.fechaMatricula }}
+
+                  </td>
+
+                  <td>
+
+                    <button
+                      class="btn btn-warning btn-sm px-3 me-2"
+                      (click)="editarMatricula(matricula)"
+                    >
+
+                      Editar
+
+                    </button>
+
+                    <button
+                      class="btn btn-danger btn-sm px-3"
+                      (click)="eliminarMatricula(matricula.id!)"
+                    >
+
+                      Eliminar
+
+                    </button>
 
                   </td>
 

@@ -10,4 +10,8 @@ public interface IMatriculaService {
     List<MatriculaEntity> obtenerTodas();
     Optional<MatriculaEntity> buscarPorId(Long id);
     void eliminar(Long id);
+    MatriculaEntity actualizar(
+            Long id,
+            MatriculaEntity matricula
+    );
 }

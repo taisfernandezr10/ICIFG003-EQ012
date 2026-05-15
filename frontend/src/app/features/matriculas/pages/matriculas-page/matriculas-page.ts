@@ -45,6 +45,13 @@ implements OnInit {
 
   cargando = signal(true);
 
+  busquedaAlumno = signal('');
+
+  modoEdicion = signal(false);
+
+  matriculaEditandoId =
+    signal<number | null>(null);
+
   nuevaMatricula = signal<Matricula>({
     alumnoId: 0,
     cursoId: 0,
@@ -63,6 +70,7 @@ implements OnInit {
   }
 
   cargarDatos(): void {
+    
 
     // CURSOS
 
@@ -146,7 +154,32 @@ implements OnInit {
 
   }
 
+  matriculasFiltradas() {
+
+  return this.matriculas().filter(m =>
+
+    `${m.alumno.nombre}
+     ${m.alumno.apellidoPaterno}`
+
+      .toLowerCase()
+
+      .includes(
+        this.busquedaAlumno()
+          .toLowerCase()
+      )
+
+  );
+
+}
+
   guardarMatricula(): void {
+    if (this.modoEdicion()) {
+
+      this.actualizarMatricula();
+
+       return;
+
+    }
 
     this.nuevaMatricula.update(m => ({
       ...m,
@@ -202,5 +235,163 @@ implements OnInit {
       });
 
   }
+
+  actualizarMatricula(): void {
+
+  this.matriculaService
+    .actualizarMatricula(
+      this.matriculaEditandoId()!,
+      this.nuevaMatricula()
+    )
+    .subscribe({
+
+      next: () => {
+
+        this.http
+          .get<any[]>(
+            'http://localhost:8212/api/v1/matriculas'
+          )
+          .subscribe({
+
+            next: (data) => {
+
+              this.matriculas.set(data);
+
+              this.modoEdicion.set(false);
+
+              this.matriculaEditandoId.set(null);
+
+              this.nuevaMatricula.set({
+
+                alumnoId: 0,
+                cursoId: 0,
+                sostenedorId: 0,
+                apoderadoTitularId: 0,
+                apoderadoSuplenteId: 0,
+                anioAcademico: 2026,
+                fechaMatricula: '',
+                estado: 'ACTIVA'
+
+              });
+
+              setTimeout(() => {
+
+                alert(
+                  'Matrícula actualizada correctamente'
+                );
+
+              }, 200);
+
+            }
+
+          });
+
+      },
+
+      error: (error: any) => {
+
+        console.error(error);
+
+        alert(
+          'No se pudo actualizar la matrícula'
+        );
+
+      }
+
+    });
+
+}
+
+  editarMatricula(matricula: any): void {
+
+    this.modoEdicion.set(true);
+
+    this.matriculaEditandoId.set(
+      matricula.id
+    );
+
+    this.nuevaMatricula.set({
+
+      alumnoId:
+        matricula.alumno.id,
+
+      cursoId:
+        matricula.curso.id,
+
+      sostenedorId:
+        matricula.sostenedor.id,
+
+      apoderadoTitularId:
+       matricula.apoderadoTitular.id,
+
+      apoderadoSuplenteId:
+        matricula.apoderadoSuplente.id,
+
+      anioAcademico:
+        matricula.anioAcademico,
+
+      fechaMatricula:
+        matricula.fechaMatricula,
+
+     estado:
+        matricula.estado
+
+  });
+
+}
+
+  eliminarMatricula(id: number): void {
+
+  const confirmar = confirm(
+    '¿Eliminar matrícula?'
+  );
+
+  if (!confirmar) return;
+
+  this.matriculaService
+    .eliminarMatricula(id)
+    .subscribe({
+
+      next: () => {
+
+  this.http
+    .get<any[]>(
+      'http://localhost:8212/api/v1/matriculas'
+    )
+    .subscribe({
+
+      next: (data) => {
+
+        this.matriculas.set(data);
+
+        setTimeout(() => {
+
+          alert(
+            'Matrícula eliminada correctamente'
+          );
+
+        }, 200);
+
+      }
+
+    });
+
+},
+
+      error: (error: any) => {
+
+        console.error(error);
+
+        alert(
+          'No se pudo eliminar la matrícula'
+        );
+
+      }
+
+    });
+
+}
+
+  
 
 }

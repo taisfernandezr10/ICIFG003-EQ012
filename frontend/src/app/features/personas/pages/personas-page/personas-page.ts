@@ -104,22 +104,23 @@ export class PersonasPage implements OnInit {
       .subscribe({
 
         next: (personaGuardada) => {
-          alert('Persona registrada correctamente');
 
           this.personas.update(lista => [
             ...lista,
             personaGuardada
-          ]);
+        ]);
 
-          this.resetFormulario();
+        this.resetFormulario();
 
-        },
+        setTimeout(() => {
 
-        error: (error) => {
+        alert(
+         'Persona registrada correctamente'
+       );
 
-          console.error(error);
+    }, 200);
 
-        }
+  },
 
       });
 
@@ -151,25 +152,26 @@ export class PersonasPage implements OnInit {
       .subscribe({
 
         next: (personaActualizada) => {
-          alert('Persona actualizada correctamente');
 
           this.personas.update(lista =>
             lista.map(p =>
-              p.id === personaActualizada.id
-                ? personaActualizada
-                : p
-            )
-          );
+             p.id === personaActualizada.id
+              ? personaActualizada
+              : p
+           )
+        );
 
-          this.resetFormulario();
+         this.resetFormulario();
 
-        },
+        setTimeout(() => {
 
-        error: (error) => {
+          alert(
+           'Persona actualizada correctamente'
+         );
 
-          console.error(error);
+   }, 200);
 
-        }
+},
 
       });
 
@@ -187,27 +189,32 @@ export class PersonasPage implements OnInit {
       .subscribe({
 
         next: () => {
-          alert('Persona eliminada correctamente');
 
-          this.personas.update(lista =>
-            lista.filter(p => p.id !== id)
+          this.obtenerPersonas();
+
+          setTimeout(() => {
+
+            alert(
+            'Persona eliminada correctamente'
           );
 
-        },
+        }, 200);
 
-        error: (error) => {
+      },
 
-          console.error(error);
+      error: (error: any) => {
 
-          alert(
-            'No se puede eliminar esta persona porque está asociada a una matrícula.'
-          );
+        console.error(error);
+
+        alert(
+          'No se puede eliminar la persona porque está asociada a una matrícula'
+        );
+
+      }
+
+    });
 
 }
-
-      });
-
-  }
 
   resetFormulario(): void {
 

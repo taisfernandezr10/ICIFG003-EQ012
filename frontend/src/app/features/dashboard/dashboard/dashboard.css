@@ -115,6 +115,134 @@
 
 }
 
+.personas-card {
+
+  padding-top: 134px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background-image:
+  linear-gradient(
+    rgba(255,255,255,0.60),
+      rgba(255,255,255,0.55)
+  ),
+  url('/personas-bg.png');
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+}
+
+.matriculas-card {
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding-top: 134px;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.45),
+      rgba(255,255,255,0.45)
+    ),
+    url('/matriculas-bg.png');
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+}
+
+.familias-card {
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding-top: 134px;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.55),
+      rgba(255,255,255,0.64)
+    ),
+    url('/familias-bg.png');
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+}
+
+.cursos-card {
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding-top: 134px;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.45),
+      rgba(255,255,255,0.45)
+    ),
+    url('/cursos-bg.png');
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+}
+
+.cursos-card h3 {
+
+  color: #111827;
+
+}
+
+.cursos-card p {
+
+  color: #4b5563;
+
+}
+
+.familias-card h3 {
+
+  color: #111827;
+
+}
+
+.familias-card p {
+
+  color: #4b5563;
+
+}
+
+.matriculas-card h3 {
+
+  color: #111827;
+
+}
+
+.matriculas-card p {
+
+  color: #4b5563;
+
+}
+
 /* ICONS */
 
 .card-icon {
@@ -307,5 +435,7 @@
     font-size: 17px;
 
   }
+
+  
 
 }

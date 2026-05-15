@@ -2,12 +2,26 @@ package com.example.demo.interfaces;
 
 import java.util.List;
 import java.util.Optional;
+
 import com.example.demo.entity.CursoEntity;
 
 public interface ICursoService {
-   
-	CursoEntity guardar(CursoEntity curso);
+
+    CursoEntity guardar(
+            CursoEntity curso
+    );
+
     List<CursoEntity> obtenerTodos();
-    Optional<CursoEntity> buscarPorId(Long id);
+
+    Optional<CursoEntity> buscarPorId(
+            Long id
+    );
+
+    CursoEntity actualizar(
+            Long id,
+            CursoEntity curso
+    );
+
     void eliminar(Long id);
+
 }

@@ -63,7 +63,7 @@
             class="table table-hover align-middle"
           >
 
-            <thead class="table-warning">
+            <thead class="table-primary">
 
               <tr>
 
@@ -115,22 +115,52 @@
 
                   <td>
 
-                    {{ familia.sostenedor.nombre }}
-                    {{ familia.sostenedor.apellidoPaterno }}
+                    <div class="fw-semibold">
+
+                      {{ familia.sostenedor.nombre }}
+                      {{ familia.sostenedor.apellidoPaterno }}
+
+                    </div>
+
+                    <small class="text-muted">
+
+                       {{ familia.sostenedor.rol }}
+
+                     </small>
 
                   </td>
 
                   <td>
 
-                    {{ familia.apoderadoTitular.nombre }}
-                    {{ familia.apoderadoTitular.apellidoPaterno }}
+                    <div class="fw-semibold">
+
+                      {{ familia.apoderadoTitular.nombre }}
+                      {{ familia.apoderadoTitular.apellidoPaterno }}
+
+                     </div>
+
+                     <small class="text-muted">
+
+                      {{ familia.apoderadoTitular.rol }}
+
+                    </small>
 
                   </td>
 
                   <td>
 
-                    {{ familia.apoderadoSuplente.nombre }}
-                    {{ familia.apoderadoSuplente.apellidoPaterno }}
+                    <div class="fw-semibold">
+
+                      {{ familia.apoderadoSuplente.nombre }}
+                      {{ familia.apoderadoSuplente.apellidoPaterno }}
+
+                    </div>
+
+                    <small class="text-muted">
+
+                      {{ familia.apoderadoSuplente.rol }}
+
+                    </small>
 
                   </td>
 
